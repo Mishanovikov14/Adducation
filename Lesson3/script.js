@@ -50,18 +50,14 @@ console.log(cat.introduce() === "Hello, my name is Meow and I am 4 years old.  M
 
 class SortedList {
     constructor(list) {
-        this.list = list.sort(function(a, b) {
-            return a - b;
-        });
+        this.list = list.sort((a, b) => a - b);
         this.length = list.length;
     }
 
     add(number) {
         this.list.push(number);
 
-        this.list.sort(function(a, b) {
-            return a - b;
-        });
+        this.list.sort((a, b) => a - b);
 
         this.length = this.list.length;
 
