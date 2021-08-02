@@ -92,6 +92,52 @@ class Person {
 
 //---------------------------------------------------------------------------------------------------
 
+// Task 4
+
+class HallOfFame {
+    constructor(size, players) {
+        this.size = size ? size : 5;
+        this.players = players ? players : [];
+        this.showCorrectList = function(players) {
+           let result = players.sort((a, b) => {
+                                    if (b[1] === a[1]) {
+                                        return a[0] > b[0] ? 1 : -1;
+                                    } else {
+                                        return b[1] - a[1];
+                                    }
+                                })
+                                .map(e => {
+                                    return e.join(": ");
+                                });
+
+            if (result.length < size) {
+                for (let i = result.length; i < size; i++) {
+                    result.push("");
+                }
+            } else {
+                result.length = size;
+            }
+
+            return result;
+        }
+        this.list = this.showCorrectList(this.players);
+    }
+
+    add(player) {
+        this.players.push(player);
+        this.list = this.showCorrectList(this.players);
+    }
+}
+
+const test = new HallOfFame(3, [["Bill", 32], ["Asill", 32], ["Fil", 34], ["Biasdll", 312]])
+console.log(test.list);
+test.add(["Biasdll", 332]);
+console.log(test.list);
+
+const test2 = new HallOfFame(3, [["Bill", 32]])
+console.log(test2.list);
+
+
 // Task 6
 
 const user = {
@@ -155,8 +201,6 @@ function sortingWorkers(workers) {
     workers.forEach(element => {
         console.log(`${element.fullname}: ${element.showSalaryWithExperience()}`);
     });
-
-
 }
 
 const worker1 = new Worker("John Dow", 8, 20);
