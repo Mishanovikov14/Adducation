@@ -1,5 +1,4 @@
 const url = "https://pokeapi.co/api/v2/pokemon/";
-let parsedResponse;
 
 function getPokemons(url) {
     const pokemons = [];
